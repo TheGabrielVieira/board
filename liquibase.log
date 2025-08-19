@@ -1,0 +1,48 @@
+ago. 19, 2025 5:29:32 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202508191633.sql
+ago. 19, 2025 5:29:32 PM liquibase.changelog
+INFO: Creating database changelog table with name: board.databasechangelog
+ago. 19, 2025 5:29:32 PM liquibase.changelog
+INFO: Reading from board.databasechangelog
+ago. 19, 2025 5:29:33 PM liquibase.snapshot
+INFO: Creating snapshot
+ago. 19, 2025 5:29:33 PM liquibase.lockservice
+INFO: Successfully acquired change log lock
+ago. 19, 2025 5:29:33 PM liquibase.command
+INFO: Using deploymentId: 5635372427
+ago. 19, 2025 5:29:33 PM liquibase.changelog
+INFO: Reading from board.databasechangelog
+Running Changeset: db/changelog/migrations/db.changelog-202508191633.sql::202508191633::gabriel
+ago. 19, 2025 5:29:33 PM liquibase.changelog
+INFO: Custom SQL executed
+ago. 19, 2025 5:29:33 PM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202508191633.sql::202508191633::gabriel ran successfully in 33ms
+
+UPDATE SUMMARY
+Run:                          1
+Previously run:               0
+Filtered out:                 0
+-------------------------------
+Total change sets:            1
+
+ago. 19, 2025 5:29:33 PM liquibase.util
+INFO: UPDATE SUMMARY
+ago. 19, 2025 5:29:33 PM liquibase.util
+INFO: Run:                          1
+ago. 19, 2025 5:29:33 PM liquibase.util
+INFO: Previously run:               0
+ago. 19, 2025 5:29:33 PM liquibase.util
+INFO: Filtered out:                 0
+ago. 19, 2025 5:29:33 PM liquibase.util
+INFO: -------------------------------
+ago. 19, 2025 5:29:33 PM liquibase.util
+INFO: Total change sets:            1
+ago. 19, 2025 5:29:33 PM liquibase.util
+INFO: Update summary generated
+ago. 19, 2025 5:29:33 PM liquibase.command
+INFO: Update command completed successfully.
+Liquibase: Update has been successful. Rows affected: 0
+ago. 19, 2025 5:29:33 PM liquibase.lockservice
+INFO: Successfully released change log lock
+ago. 19, 2025 5:29:33 PM liquibase.command
+INFO: Command execution complete

@@ -1,0 +1,31 @@
+# Use a versão 3 do formato Docker Compose
+version: '3.8'
+
+# Definição dos serviços
+services:
+  # Nome do serviço, que pode ser usado para comunicação entre containers
+  db:
+    # A imagem do Docker Hub que será usada. A versão 8.0 é ideal.
+    image: mysql:8.0
+    # Nome do container para fácil identificação
+    container_name: board-db
+    # Mapeamento de portas: <porta_na_sua_maquina>:<porta_no_container>
+    # Isso permite que sua aplicação se conecte via localhost:3306
+    ports:
+      - "3306:3306"
+    # Variáveis de ambiente que configuram o MySQL
+    environment:
+      # A senha do usuário 'root'
+      MYSQL_ROOT_PASSWORD: board
+      # O nome do banco de dados a ser criado automaticamente na inicialização
+      MYSQL_DATABASE: board
+      # O nome do usuário que sua aplicação irá usar
+      MYSQL_USER: board
+      # A senha do usuário que sua aplicação irá usar
+      MYSQL_PASSWORD: board
+    # Monta um volume para persistir os dados do banco de dados.
+    # Isso garante que seus dados não serão perdidos ao parar o container.
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    # Reinicia o container se ele falhar
+    restart: always
