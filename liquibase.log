@@ -1,48 +1,236 @@
-ago. 19, 2025 5:29:32 PM liquibase.changelog
+ago. 19, 2025 6:42:08 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202508191633.sql
-ago. 19, 2025 5:29:32 PM liquibase.changelog
-INFO: Creating database changelog table with name: board.databasechangelog
-ago. 19, 2025 5:29:32 PM liquibase.changelog
+ago. 19, 2025 6:42:08 PM liquibase.changelog
 INFO: Reading from board.databasechangelog
-ago. 19, 2025 5:29:33 PM liquibase.snapshot
-INFO: Creating snapshot
-ago. 19, 2025 5:29:33 PM liquibase.lockservice
+ago. 19, 2025 6:42:08 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202508191814.sql
+ago. 19, 2025 6:42:08 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202508191826.sql
+ago. 19, 2025 6:42:08 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202508191832.sql
+ago. 19, 2025 6:42:08 PM liquibase.lockservice
 INFO: Successfully acquired change log lock
-ago. 19, 2025 5:29:33 PM liquibase.command
-INFO: Using deploymentId: 5635372427
-ago. 19, 2025 5:29:33 PM liquibase.changelog
+ago. 19, 2025 6:42:08 PM liquibase.command
+INFO: Using deploymentId: 5639728372
+ago. 19, 2025 6:42:08 PM liquibase.changelog
 INFO: Reading from board.databasechangelog
-Running Changeset: db/changelog/migrations/db.changelog-202508191633.sql::202508191633::gabriel
-ago. 19, 2025 5:29:33 PM liquibase.changelog
+Running Changeset: db/changelog/migrations/db.changelog-202508191814.sql::202508191633::gabriel
+ago. 19, 2025 6:42:08 PM liquibase.changelog
 INFO: Custom SQL executed
-ago. 19, 2025 5:29:33 PM liquibase.changelog
-INFO: ChangeSet db/changelog/migrations/db.changelog-202508191633.sql::202508191633::gabriel ran successfully in 33ms
+ago. 19, 2025 6:42:08 PM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202508191814.sql::202508191633::gabriel ran successfully in 57ms
+Running Changeset: db/changelog/migrations/db.changelog-202508191826.sql::202508191633::gabriel
+ago. 19, 2025 6:42:08 PM liquibase.changelog
+INFO: Custom SQL executed
+ago. 19, 2025 6:42:08 PM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202508191826.sql::202508191633::gabriel ran successfully in 46ms
+Running Changeset: db/changelog/migrations/db.changelog-202508191832.sql::202508191633::gabriel
+ago. 19, 2025 6:42:09 PM liquibase.changelog
+SEVERE: ChangeSet db/changelog/migrations/db.changelog-202508191832.sql::202508191633::gabriel encountered an exception.
+liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5 [Failed SQL: (1064) CREATE TABLE BLOCKS(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    block_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    block_reason VARCHAR(255) NOT NULL,
+    unblock_at = TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT NOT NULL,
+    CONSTRAINT cards__block_fk FOREIGN KEY (card_id) REFERENCES CARDS(id) ON DELETE CASCADE
+) ENGINE=InnoDB]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:816)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.Scope.child(Scope.java:282)
+	at liquibase.Scope.child(Scope.java:286)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:201)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.Liquibase.update(Liquibase.java:175)
+	at liquibase.Liquibase.update(Liquibase.java:155)
+	at br.com.boardproject.persistence.migration.MigrationStrategy.executeMigration(MigrationStrategy.java:37)
+	at br.com.boardproject.Main.main(Main.java:13)
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:837)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:685)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 43 more
+
 
 UPDATE SUMMARY
-Run:                          1
-Previously run:               0
+Run:                          2
+Previously run:               1
 Filtered out:                 0
 -------------------------------
-Total change sets:            1
+Total change sets:            4
 
-ago. 19, 2025 5:29:33 PM liquibase.util
+ago. 19, 2025 6:42:09 PM liquibase.util
 INFO: UPDATE SUMMARY
-ago. 19, 2025 5:29:33 PM liquibase.util
-INFO: Run:                          1
-ago. 19, 2025 5:29:33 PM liquibase.util
-INFO: Previously run:               0
-ago. 19, 2025 5:29:33 PM liquibase.util
+ago. 19, 2025 6:42:09 PM liquibase.util
+INFO: Run:                          2
+ago. 19, 2025 6:42:09 PM liquibase.util
+INFO: Previously run:               1
+ago. 19, 2025 6:42:09 PM liquibase.util
 INFO: Filtered out:                 0
-ago. 19, 2025 5:29:33 PM liquibase.util
+ago. 19, 2025 6:42:09 PM liquibase.util
 INFO: -------------------------------
-ago. 19, 2025 5:29:33 PM liquibase.util
-INFO: Total change sets:            1
-ago. 19, 2025 5:29:33 PM liquibase.util
+ago. 19, 2025 6:42:09 PM liquibase.util
+INFO: Total change sets:            4
+ago. 19, 2025 6:42:09 PM liquibase.util
 INFO: Update summary generated
-ago. 19, 2025 5:29:33 PM liquibase.command
-INFO: Update command completed successfully.
-Liquibase: Update has been successful. Rows affected: 0
-ago. 19, 2025 5:29:33 PM liquibase.lockservice
+ago. 19, 2025 6:42:09 PM liquibase.command
+INFO: Update command encountered an exception.
+ago. 19, 2025 6:42:09 PM liquibase.lockservice
 INFO: Successfully released change log lock
-ago. 19, 2025 5:29:33 PM liquibase.command
+ago. 19, 2025 6:42:09 PM liquibase.command
+INFO: Logging exception.
+ERROR: Exception Details
+ERROR: Exception Primary Class:  SQLSyntaxErrorException
+ERROR: Exception Primary Reason:  You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5
+ERROR: Exception Primary Source:  MySQL 8.0.43
+ago. 19, 2025 6:42:09 PM liquibase.command
 INFO: Command execution complete
+liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202508191832.sql::202508191633::gabriel:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5 [Failed SQL: (1064) CREATE TABLE BLOCKS(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    block_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    block_reason VARCHAR(255) NOT NULL,
+    unblock_at = TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT NOT NULL,
+    CONSTRAINT cards__block_fk FOREIGN KEY (card_id) REFERENCES CARDS(id) ON DELETE CASCADE
+) ENGINE=InnoDB]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:310)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:201)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.Liquibase.update(Liquibase.java:175)
+	at liquibase.Liquibase.update(Liquibase.java:155)
+	at br.com.boardproject.persistence.migration.MigrationStrategy.executeMigration(MigrationStrategy.java:37)
+	at br.com.boardproject.Main.main(Main.java:13)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202508191832.sql::202508191633::gabriel:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5 [Failed SQL: (1064) CREATE TABLE BLOCKS(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    block_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    block_reason VARCHAR(255) NOT NULL,
+    unblock_at = TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT NOT NULL,
+    CONSTRAINT cards__block_fk FOREIGN KEY (card_id) REFERENCES CARDS(id) ON DELETE CASCADE
+) ENGINE=InnoDB]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:155)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	... 15 more
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202508191832.sql::202508191633::gabriel:
+     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5 [Failed SQL: (1064) CREATE TABLE BLOCKS(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    block_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    block_reason VARCHAR(255) NOT NULL,
+    unblock_at = TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT NOT NULL,
+    CONSTRAINT cards__block_fk FOREIGN KEY (card_id) REFERENCES CARDS(id) ON DELETE CASCADE
+) ENGINE=InnoDB]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:873)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.Scope.child(Scope.java:282)
+	at liquibase.Scope.child(Scope.java:286)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	... 23 more
+Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5 [Failed SQL: (1064) CREATE TABLE BLOCKS(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    block_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    block_reason VARCHAR(255) NOT NULL,
+    unblock_at = TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT NOT NULL,
+    CONSTRAINT cards__block_fk FOREIGN KEY (card_id) REFERENCES CARDS(id) ON DELETE CASCADE
+) ENGINE=InnoDB]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:816)
+	... 38 more
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
+    card_id BIGINT N' at line 5
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:837)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:685)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 43 more
