@@ -2,6 +2,7 @@ package br.com.boardproject;
 
 
 import br.com.boardproject.persistence.migration.MigrationStrategy;
+import br.com.boardproject.ui.MainMenu;
 
 import java.sql.SQLException;
 
@@ -12,5 +13,6 @@ public class Main {
         try(var connection = getConnection()){
             new MigrationStrategy(connection).executeMigration();
         }
+        new MainMenu().execute();
     }
 }
