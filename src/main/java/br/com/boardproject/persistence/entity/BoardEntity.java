@@ -10,5 +10,5 @@ public class BoardEntity {
 
     private Long id;
     private String name;
-    private List<BoarColumnEntity> boardColumns = new ArrayList<>();
+    private List<BoardColumnEntity> boardColumns = new ArrayList<>();
 }
