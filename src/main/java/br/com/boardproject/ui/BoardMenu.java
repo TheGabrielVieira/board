@@ -1,5 +1,6 @@
 package br.com.boardproject.ui;
 
+import br.com.boardproject.dto.BoardColumnInfoDTO;
 import br.com.boardproject.persistence.entity.BoardColumnEntity;
 import br.com.boardproject.persistence.entity.BoardEntity;
 import br.com.boardproject.persistence.entity.CardEntity;
@@ -13,7 +14,6 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import static br.com.boardproject.persistence.config.ConnectionConfig.getConnection;
-import static br.com.boardproject.persistence.entity.BoardColumnKindEnum.INITIAL;
 
 @AllArgsConstructor
 public class BoardMenu {
@@ -64,16 +64,23 @@ public class BoardMenu {
         card.setTitle(scanner.next());
         System.out.println("Informe a descricao do card");
         card.setDescription(scanner.next());
-        var selectedColumn = entity.getBoardColumns().stream()
-                .filter(bc -> bc.getKind().equals(INITIAL))
-                .findFirst().orElseThrow();
-        card.setBoardColumn(selectedColumn);
+        card.setBoardColumn(entity.getInitialColumn());
         try(var connection = getConnection()){
             new CardService(connection).create(card);
         }
     }
 
-    private void moveCardToNextColumn() {
+    private void moveCardToNextColumn() throws SQLException{
+        System.out.println("Informe o id do card que deseja mover para a proxima couna");
+        var cardId = scanner.nextLong();
+        var boardColumnsInfo = entity.getBoardColumns().stream()
+                .map(bc -> new BoardColumnInfoDTO(bc.getId(), bc.getOrder(), bc.getKind()))
+                .toList();
+        try(var connection = getConnection()){
+            new CardService(connection).moveToNextColumn(cardId, boardColumnsInfo);
+        } catch (RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void blockCard() {
