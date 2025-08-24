@@ -99,6 +99,15 @@ public class BoardMenu {
     }
 
     private void unblockCard() throws SQLException {
+        System.out.println("Informe o id do card que sera desbloqueado");
+        var cardId = scanner.nextLong();
+        System.out.println("Informe o motivo do desbloqueio do card");
+        var reason = scanner.next();
+        try(var connection = getConnection()){
+            new CardService(connection).unblock(cardId, reason);
+        } catch (RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void cancelCard() throws SQLException{
@@ -124,9 +133,7 @@ public class BoardMenu {
                         System.out.printf("Coluna [%s] tipo [%s] tem %s cards\n", c.name(), c.kind(), c.cardsAmount())
                 );
             });
-
         }
-
     }
 
     private void showColumn() throws SQLException{
