@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset gabriel:202508191633
+--changeset gabriel:202508191814
 --comment: boards_columns table create
 
 CREATE TABLE BOARDS_COLUMNS(
