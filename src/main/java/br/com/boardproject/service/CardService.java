@@ -51,8 +51,38 @@ public class CardService {
             }
             var nextColumn = boardColumnsInfo.stream()
                     .filter(bc -> bc.order() == currentColumn.order() + 1)
-                    .findFirst().orElseThrow();
+                    .findFirst().orElseThrow(() -> new IllegalArgumentException("o card esta cancelado"));
             dao.moveToColumn(nextColumn.id(), cardId);
+            connection.commit();
+        } catch (SQLException ex){
+            connection.rollback();
+            throw ex;
+        }
+    }
+
+    public void cancel(final Long cardId, final Long cancelColumnId,
+                       final List<BoardColumnInfoDTO> boardColumnsInfo) throws SQLException{
+        try {
+            var dao = new CardDAO(connection);
+            var optional = dao.findById(cardId);
+            var dto = optional.orElseThrow(
+                    () -> new EntityNotFoundException("O card id %s nao foi encontrado".formatted(cardId))
+            );
+            if (dto.blocked()){
+                var message = "O card %s esta bloqueado, e ncessario desbloquea-lo para mover".formatted(cardId);
+                throw new CardBlockedException(message);
+            }
+            var currentColumn = boardColumnsInfo.stream()
+                    .filter(bc -> bc.id().equals(dto.columnId()))
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalArgumentException("O card informado pertence a outro board"));
+            if (currentColumn.kind().equals(FINAL)){
+                throw new CardFinishedException("O card já foi finalizado");
+            }
+            boardColumnsInfo.stream()
+                    .filter(bc -> bc.order() == currentColumn.order() + 1)
+                    .findFirst().orElseThrow(() -> new IllegalArgumentException("O card esta cancelado"));
+            dao.moveToColumn(cancelColumnId, cardId);
             connection.commit();
         } catch (SQLException ex){
             connection.rollback();
